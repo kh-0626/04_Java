@@ -73,9 +73,9 @@ public class VariableEx3 {
 		
 		System.out.println("문자(char) <-> 유니코드(int)");
 		
-		System.out.println("A의 유니코드 번호 : " + (int)'A');
+		System.out.println("A의 유니코드 번호 : " + (int)'A'); // 65
 		
-		System.out.println("A 뒤에 10번째 문자 : " + (char)('A' + 10) );
+		System.out.println("A 뒤에 10번째 문자 : " + (char)('A' + 10) ); // K
 		// A B C D E F G H J K
 		
 	}
