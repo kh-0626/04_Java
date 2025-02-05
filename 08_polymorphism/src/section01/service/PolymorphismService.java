@@ -140,6 +140,10 @@ public class PolymorphismService {
 	 *   정적 바인딩된 메서드를
 	 *   실제 객체 타입을 기준으로 연결
 	 *   
+	 *   메서드 호출부와 
+	 *   실제 참조하는 객체의 오버라이딩된 메서드와 연결
+	 *   (오버라이딩된 메서드가 우선권을 갖는다)
+	 *   
 	 * - 왜 사용?
 	 *   1) 다운 캐스팅의 번거로움을 없앰
 	 *   2) 재정의된 메서드(조금 더 효율적 또는 알맞는 기능) 수행  
@@ -234,6 +238,39 @@ public class PolymorphismService {
 		 *   실행을 멈추고
 		 *   해당 시점의 존재하는 변수/필드 값을 확인하는 모드
 		 */
+	}
+	
+	
+	// 다운 캐스팅 시 주의 사항
+	// - 강제 형변환이 적용되는 참조 변수가
+	//   형변환 하려는 타입의 객체를 참조하고 있는지 확인 필요
+	// -> instanceof 사용
+	public void test5() {
+		
+		// 업 캐스팅
+		Parent p = new Child("김", 200, "소나타");
+		test6(p);
+	}
+	
+	// 전달 받은 객체를 String 타입으로 다운 캐스팅(강제 형변환)
+	public void test6(Object obj) {
+		
+		/* ClassCastException 발생
+		 * - 참조 변수의 강제 형변환(다운 캐스팅) 시
+		 *   참조하는 객체가 
+		 *   변환하려는 타입이 아니거나 상속 관계도 아니면
+		 *   형변환 불가(ClassCastException) 발생
+		 * */
+		
+		// 참조하는 객체가 String 타입인 경우에만 형변환
+		if(obj instanceof String) {
+			String p = (String)obj;
+			System.out.println(p);
+			
+		}else {
+			// String이 아니면 객체를 만들 때 사용한 클래스명 출력
+		    System.out.println(obj.getClass().getName());
+		}
 	}
 	
 }
