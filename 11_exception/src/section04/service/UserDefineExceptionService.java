@@ -2,6 +2,7 @@ package section04.service;
 
 import java.util.Scanner;
 
+import section04.exception.MyTestException;
 import section04.exception.NegativeQuantityException;
 
 public class UserDefineExceptionService {
@@ -43,7 +44,13 @@ public class UserDefineExceptionService {
 		
 	}
 	
-	
+	public void test2() {
+		
+		// MyTestException 강제 발생
+		throw new MyTestException();
+		// 컴파일 에러 발생 O -> Checked Exception
+		// 컴파일 에러 발생 X -> Unchecked Exception
+	}
 	
 	
 	
